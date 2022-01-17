@@ -17,6 +17,12 @@ const client = require('twilio')(accountSid, authToken);
 client.verify.services.create({friendlyName: 'My First Verify Service'})
                       .then(service => console.log(service.sid));
 
+                      client.verify.services('VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+                      .verifications
+                      .create({to: '+15017122661', channel: 'sms'})
+                      .then(verification => console.log(verification.status));
+
+
 client.messages
   .create({
     body: 'Hello from Node',
